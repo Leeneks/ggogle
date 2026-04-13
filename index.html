@@ -424,25 +424,93 @@ if (tg) {
   tg.setBackgroundColor('#0e0e0e');
 }
 
-// ── State ─────────────────────────────────────────────────────
-let catalog = [];           // [{id, name, emoji, products:[...]}]
+// ╔══════════════════════════════════════════════════════════════╗
+// ║         КАТАЛОГ ТОВАРОВ — РЕДАКТИРУЙ ЗДЕСЬ                  ║
+// ╚══════════════════════════════════════════════════════════════╝
+const CATALOG_DATA = [
+  {
+    id: 1,
+    name: "Фармы / Кинги ФБ",
+    emoji: "👑",
+    products: [
+      {
+        id: 101,
+        name: "Google FARM 14 дней Ukraine | Без Google ADS | 2FA Г200",
+        description: "Гео: Украина\nFarm 14 дней + время без активности\nФормат: логин:пароль:токен:куки",
+        price: 9.00,
+        max_qty: 15,
+        image_url: "",
+        in_stock: true
+      },
+      {
+        id: 102,
+        name: "Google Farm | UA | 21d +6 месяцев отлежки | ФИЗ СИМ P445",
+        description: "Рега секретным способом - не летят на апилы\nФормат: логин:пароль:токен",
+        price: 18.00,
+        max_qty: 10,
+        image_url: "",
+        in_stock: true
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "Фан Пейдж",
+    emoji: "⭐",
+    products: [
+      {
+        id: 201,
+        name: "FB Фан Пейдж с PZRD | BEZ",
+        description: "Подтверждён по смс\nПодтверждён по почте\nФормат: логин:пароль:куки",
+        price: 5.00,
+        max_qty: 20,
+        image_url: "",
+        in_stock: true
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: "Бизнес Менеджеры",
+    emoji: "💎",
+    products: [
+      {
+        id: 301,
+        name: "БМ чистый | Верифицирован | UA",
+        description: "Чистый бизнес менеджер\nВерифицирован\nГео: Украина",
+        price: 12.00,
+        max_qty: 5,
+        image_url: "",
+        in_stock: true
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: "Автореги FB",
+    emoji: "🤖",
+    products: [
+      {
+        id: 401,
+        name: "GB Авторег GB / почта:пароль",
+        description: "Могут быть частично запенены\nТокен EAAB\nПодтверждены по смс\nПодтверждены по почте\nФормат: логин:пароль:ид:почта:токен:куки:2ф",
+        price: 1.30,
+        max_qty: 15,
+        image_url: "",
+        in_stock: true
+      }
+    ]
+  }
+];
+// ══════════════════════════════════════════════════════════════
+
+let catalog = CATALOG_DATA;
 let currentCatId = null;
 let currentProduct = null;
 let currentTab = 'catalog';
-let breadcrumb = [];        // stack for back navigation
+let breadcrumb = [];
 
-// ── API base (same origin as Mini App, or change to your server) ──
-const API = '';  // empty = same origin. Change to 'https://your-server.com' if needed
-
-async function fetchCatalog() {
-  try {
-    const r = await fetch(`${API}/api/catalog`);
-    catalog = await r.json();
-  } catch (e) {
-    console.error('Catalog fetch failed:', e);
-    catalog = [];
-  }
-}
+async function fetchCatalog() { /* данные уже вшиты выше */ }
 
 // ── Pages ─────────────────────────────────────────────────────
 function showPage(id) {
@@ -670,3 +738,4 @@ function formatPrice(p) {
 </script>
 </body>
 </html>
+
